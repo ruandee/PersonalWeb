@@ -2,8 +2,8 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { NavigationSidebar } from "components/navigation-sidebar"
-import { Footer } from "components/footer"
+import { NavigationSidebar } from "./components/navigation-sidebar"
+import { Footer } from "./components/footer"
 
 export default function Home() {
   const [showNotification, setShowNotification] = useState(true)
