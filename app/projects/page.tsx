@@ -1,8 +1,8 @@
 "use client"
 
 import { useState } from "react"
-import { NavigationSidebar } from "@/components/navigation-sidebar"
-import { Footer } from "@/components/footer"
+import { NavigationSidebar } from "components/navigation-sidebar"
+import { Footer } from "components/footer"
 
 const projects = [
   {

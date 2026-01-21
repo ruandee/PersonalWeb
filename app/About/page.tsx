@@ -1,5 +1,5 @@
-import { NavigationSidebar } from "../Components/navigation-sidebar"
-import { Footer } from "../Components/footer"
+import { NavigationSidebar } from "../components/navigation-sidebar"
+import { Footer } from "../components/footer"
 
 export default function AboutPage() {
   return (
