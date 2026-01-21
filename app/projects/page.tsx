@@ -25,7 +25,7 @@ const projects = [
     id: 3,
     title: "Arduino-Based Falling-Ball Viscometer ",
     description:
-      "•	Determined a fluid’s viscosity by tracking a sphere’s fall through solution with analog light barriers and circuit, calculating velocity and applying Stokes’ law",
+      "Determined a fluid’s viscosity by tracking a sphere’s fall through solution with analog light barriers and circuit, calculating velocity and applying Stokes’ law",
     tags: ["Arduino C++"],
     github: "https://github.com/ruandee/viscometer",
   },
