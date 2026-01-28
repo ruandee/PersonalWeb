@@ -18,7 +18,7 @@ export default function AboutPage() {
             <p className="text-lg leading-relaxed">
               Hello, I'm Dee. I'm interested in quantitative research. My favourite areas
               to explore include equity research, options trading, and consumer behaviour.
-              In my free time, I enjoy(?) relaxing(?) with some analytical philosophy.
+              In my free time, I enjoy(?) relaxing(?) with some continental philosophy.
             </p>
             <p className="text-lg leading-relaxed">
               I'm passionate about studying data to help me solve all types of problems.
