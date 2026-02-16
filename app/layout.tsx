@@ -2,6 +2,7 @@ import React from "react"
 import type { Metadata } from 'next'
 import { Nunito, Space_Mono } from 'next/font/google'
 import './globals.css'
+import AnimationWrapper from './components/AnimationWrapper'
 
 const _nunito = Nunito({ subsets: ["latin"], variable: '--font-nunito' });
 const _spaceMono = Space_Mono({ weight: ['400', '700'], subsets: ["latin"], variable: '--font-space-mono' });
@@ -19,7 +20,9 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body className={`${_nunito.variable} ${_spaceMono.variable} font-sans antialiased`}>
-        {children}
+        <AnimationWrapper>
+          {children}
+        </AnimationWrapper>
       </body>
     </html>
   )
