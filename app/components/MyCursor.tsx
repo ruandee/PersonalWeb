@@ -13,6 +13,7 @@ export default function MyCursor() {
   const [ringPosition, setRingPosition] = useState<CursorPosition>({ x: -100, y: -100 });
   const [isLocked, setIsLocked] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
+  const [isClicking, setIsClicking] = useState(false);
 
   const mouseRef = useRef<CursorPosition>({ x: -100, y: -100 });
   const cursorRef = useRef<CursorPosition>({ x: -100, y: -100 });
@@ -47,7 +48,9 @@ export default function MyCursor() {
       const link = target.closest('a, button');
       if (link) {
         setIsLocked(true);
+        setIsClicking(true);
         setTimeout(() => setIsLocked(false), 800);
+        setTimeout(() => setIsClicking(false), 1000);
       }
     };
 
@@ -89,7 +92,7 @@ export default function MyCursor() {
       </div>
 
       <div
-        className={`cursor-ring ${isHovering ? 'hovering' : ''}`}
+        className={`cursor-ring ${isHovering ? 'hovering' : ''} ${isClicking ? 'clicking' : ''}`}
         style={{
           left: `${ringPosition.x}px`,
           top: `${ringPosition.y}px`,
