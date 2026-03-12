@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { Nunito, Space_Mono } from 'next/font/google'
 import './globals.css'
 import AnimationWrapper from './components/AnimationWrapper'
+import MyCursor from '@/components/MyCursor'
 
 const _nunito = Nunito({ subsets: ["latin"], variable: '--font-nunito' });
 const _spaceMono = Space_Mono({ weight: ['400', '700'], subsets: ["latin"], variable: '--font-space-mono' });
