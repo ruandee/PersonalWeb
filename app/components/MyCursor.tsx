@@ -10,23 +10,29 @@ interface CursorPosition {
 
 export default function MyCursor() {
   const [position, setPosition] = useState<CursorPosition>({ x: -100, y: -100 });
-  const [dotPosition, setDotPosition] = useState<CursorPosition>({ x: -100, y: -100 });
+  const [ringPosition, setRingPosition] = useState<CursorPosition>({ x: -100, y: -100 });
   const [isLocked, setIsLocked] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
+
   const mouseRef = useRef<CursorPosition>({ x: -100, y: -100 });
-  const dotRef = useRef<CursorPosition>({ x: -100, y: -100 });
+  const cursorRef = useRef<CursorPosition>({ x: -100, y: -100 });
+  const ringRef = useRef<CursorPosition>({ x: -100, y: -100 });
   const rafRef = useRef<number>(0);
 
   useEffect(() => {
-    // test this :(
-    const LERP = 0.12;
-
+    const LERP_CURSOR = 0.12;
+    const LERP_RING = 0.08;
     const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
 
     const animate = () => {
-      dotRef.current.x = lerp(dotRef.current.x, mouseRef.current.x, LERP);
-      dotRef.current.y = lerp(dotRef.current.y, mouseRef.current.y, LERP);
-      setDotPosition({ x: dotRef.current.x, y: dotRef.current.y });
+      cursorRef.current.x = lerp(cursorRef.current.x, mouseRef.current.x, LERP_CURSOR);
+      cursorRef.current.y = lerp(cursorRef.current.y, mouseRef.current.y, LERP_CURSOR);
+      setPosition({ x: cursorRef.current.x, y: cursorRef.current.y });
+
+      ringRef.current.x = lerp(ringRef.current.x, mouseRef.current.x, LERP_RING);
+      ringRef.current.y = lerp(ringRef.current.y, mouseRef.current.y, LERP_RING);
+      setRingPosition({ x: ringRef.current.x, y: ringRef.current.y });
+
       rafRef.current = requestAnimationFrame(animate);
     };
 
@@ -34,7 +40,6 @@ export default function MyCursor() {
 
     const updatePosition = (e: MouseEvent) => {
       mouseRef.current = { x: e.clientX, y: e.clientY };
-      setPosition({ x: e.clientX, y: e.clientY });
     };
 
     const handleMouseDown = (e: MouseEvent) => {
@@ -84,10 +89,10 @@ export default function MyCursor() {
       </div>
 
       <div
-        className={`cursor-dot ${isHovering ? 'hovering' : ''}`}
+        className={`cursor-ring ${isHovering ? 'hovering' : ''}`}
         style={{
-          left: `${dotPosition.x}px`,
-          top: `${dotPosition.y}px`,
+          left: `${ringPosition.x}px`,
+          top: `${ringPosition.y}px`,
         }}
       />
     </>
