@@ -2,7 +2,6 @@ import React from "react"
 import type { Metadata } from 'next'
 import { Nunito, Space_Mono } from 'next/font/google'
 import './globals.css'
-import AnimationWrapper from './components/AnimationWrapper'
 import MyCursor from './components/MyCursor'
 
 const _nunito = Nunito({ subsets: ["latin"], variable: '--font-nunito' });
@@ -13,17 +12,12 @@ export const metadata: Metadata = {
   description: 'Why are you looking at my metadata?',
 }
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
     <html lang="en" className="dark">
       <body className={`${_nunito.variable} ${_spaceMono.variable} font-sans antialiased`}>
-        <AnimationWrapper>
-          {children}
-        </AnimationWrapper>
+        <MyCursor />
+        {children}
       </body>
     </html>
   )
