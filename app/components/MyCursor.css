@@ -92,14 +92,14 @@
 
 .cursor-ring.hovering.clicking {
   opacity: 0;
-  width: 18px;
-  height: 18px;
+  width: 32px;
+  height: 32px;
   transition: opacity 0.1s ease;
 }
 
 .cursor-ring.hovering {
-  width: 18px;
-  height: 18px;
+  width: 32px;
+  height: 32px;
   border-color: rgba(255, 255, 255, 0.95);
   box-shadow: 0 0 6px 2px rgba(255, 255, 255, 0.5);
 }
