@@ -5,10 +5,10 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 
 const navItems = [
-  { name: "HOME", href: "/" },
-  { name: "ABOUT ME", href: "/about" },
-  { name: "MY PROJECTS", href: "/projects" },
   { name: "WORK", href: "/work" },
+  { name: "MY PROJECTS", href: "/projects" },
+  { name: "ABOUT ME", href: "/about" },
+  { name: "HOME", href: "/" },
 ]
 
 export function NavigationSidebar() {
@@ -78,7 +78,7 @@ function NavItem({
           ${
             isActive
               ? "bg-[#84d1f0] text-white shadow-[0_0_16px_2px_rgba(132,209,240,0.4)]"
-              : "text-white hover:bg-[#84d1f0] hover:text-white hover:shadow-[0_0_16px_2px_rgba(132,209,240,0.35)]"
+              : "text-white hover:bg-[#84d1f0]/60 hover:text-white hover:shadow-[0_0_16px_2px_rgba(132,209,240,0.25)]"
           }
         `}
       >
