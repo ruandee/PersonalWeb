@@ -4,7 +4,7 @@ import { Github, Linkedin } from "lucide-react"
 
 export function Footer() {
   return (
-    <footer className="fixed bottom-0 left-0 right-0 z-40 py-6 px-8 flex justify-center gap-6">
+    <footer className="fixed bottom-0 left-0 right-0 z-40 py-6 flex justify-center gap-6">
       <a 
         href="https://github.com/ruandee" 
         target="_blank" 
