@@ -3,7 +3,6 @@
 import { useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Menu } from "lucide-react"
 
 const navItems = [
   { name: "HOME", href: "/" },
@@ -17,94 +16,73 @@ export function NavigationSidebar() {
   const pathname = usePathname()
 
   return (
-    <div 
-      className="fixed top-6 left-6 z-50"
-      onMouseEnter={() => setIsOpen(true)}
-      onMouseLeave={() => setIsOpen(false)}
-    >
-      <div className="cursor-pointer p-2 transition-all duration-300 hover:opacity-80">
-        <Menu className="h-6 w-6 text-white" />
-      </div>
-
-      <div 
-        className={`absolute top-10 left-0 bg-[#0a0a0a]/95 backdrop-blur-sm border border-[#2a2a2a] transition-all duration-300 ease-out overflow-hidden ${
-          isOpen ? "opacity-100 max-h-96 py-4" : "opacity-0 max-h-0 py-0"
+    <div className="fixed bottom-6 left-6 z-50">
+      <div
+        className={`flex flex-col-reverse gap-1 mb-2 transition-all duration-300 ${
+          isOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 translate-y-2 pointer-events-none"
         }`}
       >
-        <div className="px-2">
-          <div className="text-[#84d1f0] text-xs tracking-[0.3em] px-4 pb-3 border-b border-[#2a2a2a] mb-3">
-            NAVIGATION
-          </div>
-          <nav className="flex flex-col gap-1">
-            {navItems.map((item) => (
-              <NavItem 
-                key={item.name} 
-                name={item.name} 
-                href={item.href}
-                isActive={pathname === item.href}
-              />
-            ))}
-          </nav>
-        </div>
+        {navItems.map((item, i) => (
+          <NavItem
+            key={item.name}
+            name={item.name}
+            href={item.href}
+            isActive={pathname === item.href}
+            style={{ transitionDelay: isOpen ? `${i * 40}ms` : "0ms" }}
+          />
+        ))}
       </div>
+
+      <button
+        onClick={() => setIsOpen((v) => !v)}
+        className="group flex items-center gap-3 focus:outline-none"
+        aria-label="Toggle navigation"
+      >
+        <div className="relative flex flex-col justify-center items-center w-8 h-8">
+          <span
+            className={`block h-px bg-white transition-all duration-300 ${
+              isOpen ? "w-5 rotate-45 translate-y-px" : "w-5"
+            }`}
+          />
+          <span
+            className={`block h-px bg-white mt-1.5 transition-all duration-300 ${
+              isOpen ? "w-5 -rotate-45 -translate-y-[7px]" : "w-3"
+            }`}
+          />
+        </div>
+        <span className="text-xs tracking-[0.25em] text-white/50 group-hover:text-white/80 transition-colors duration-200">
+          {isOpen ? "CLOSE" : "MENU"}
+        </span>
+      </button>
     </div>
   )
 }
 
-function NavItem({ 
-  name, 
-  href, 
-  isActive 
-}: { 
+function NavItem({
+  name,
+  href,
+  isActive,
+  style,
+}: {
   name: string
   href: string
-  isActive: boolean 
+  isActive: boolean
+  style?: React.CSSProperties
 }) {
-  const [isHovered, setIsHovered] = useState(false)
-
   return (
-    <Link href={href}>
+    <Link href={href} style={style}>
       <div
-        className={`relative px-4 py-2 cursor-pointer transition-all duration-200 group ${
-          isActive ? "bg-[#84d1f0]/10" : ""
-        }`}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
+        className={`
+          relative px-5 py-2.5 text-sm tracking-[0.2em] font-light whitespace-nowrap
+          transition-all duration-200
+          ${
+            isActive
+              ? "bg-[#84d1f0] text-white shadow-[0_0_16px_2px_rgba(132,209,240,0.4)]"
+              : "text-white hover:bg-[#84d1f0] hover:text-white hover:shadow-[0_0_16px_2px_rgba(132,209,240,0.35)]"
+          }
+        `}
       >
-        <span 
-          className={`absolute top-0 left-0 text-[#84d1f0] transition-opacity duration-200 text-sm ${
-            isHovered || isActive ? "opacity-100" : "opacity-0"
-          }`}
-        >
-          {"┌"}
-        </span>
-        <span 
-          className={`absolute top-0 right-0 text-[#84d1f0] transition-opacity duration-200 text-sm ${
-            isHovered || isActive ? "opacity-100" : "opacity-0"
-          }`}
-        >
-          {"┐"}
-        </span>
-        <span 
-          className={`absolute bottom-0 left-0 text-[#84d1f0] transition-opacity duration-200 text-sm ${
-            isHovered || isActive ? "opacity-100" : "opacity-0"
-          }`}
-        >
-          {"└"}
-        </span>
-        <span 
-          className={`absolute bottom-0 right-0 text-[#84d1f0] transition-opacity duration-200 text-sm ${
-            isHovered || isActive ? "opacity-100" : "opacity-0"
-          }`}
-        >
-          {"┘"}
-        </span>
-
-        <span className={`text-sm tracking-wider whitespace-nowrap ${
-          isActive ? "text-[#84d1f0]" : "text-white"
-        }`}>
-          {name}
-        </span>
+        {name}
       </div>
     </Link>
   )
