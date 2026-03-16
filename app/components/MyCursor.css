@@ -1,3 +1,7 @@
+* {
+  cursor: none !important;
+}
+
 .custom-cursor {
   position: fixed;
   width: 52px;
