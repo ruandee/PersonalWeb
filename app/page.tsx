@@ -1,7 +1,6 @@
 "use client"
 
 import { useState, useRef, useEffect } from "react"
-import { NavigationSidebar } from "./components/navigation-sidebar"
 import { Footer } from "./components/footer"
 
 const workExperience = [
@@ -56,8 +55,6 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-[#0a0a0a] relative overflow-hidden">
       <div className="stars" />
-
-      <NavigationSidebar />
 
       <div
         className={`fixed top-6 right-8 md:right-12 z-50 transition-all duration-500 ease-in-out ${
