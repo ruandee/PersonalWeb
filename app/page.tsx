@@ -44,12 +44,10 @@ const projects = [
 const bioLines = [
   { label: "—", text: "Hello, I'm Dee." },
   { label: "", text: "I'm interested in quantitative research." },
-  { label: "", text: "My favourite areas to explore include equity research," },
-  { label: "", text: "options trading, and consumer behaviour." },
-  { label: "—", text: "In my free time, I enjoy(?) relaxing(?)" },
-  { label: "", text: "with some continental philosophy." },
-  { label: "—", text: "I'm passionate about studying data" },
-  { label: "", text: "to help me solve all types of problems." },
+  { label: "", text: "My favourite areas to explore include equity research and consumer behaviour." },
+  { label: "", text: "I'm passionate about studying data to help me understand different types of problems." },
+  { label: "—", text: "In my free time, I enjoy(?) relaxing(??) with some continental philosophy." },
+  { label: "", text: "My other hobbies include playing puzzle games, cuddling my cat, and taking pictures when I go outside." },
 ]
 
 export default function Home() {
